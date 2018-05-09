@@ -22,9 +22,7 @@ public class Zombie extends Monster implements MonsterInterface  {
         return getBasicDefensce();
     }
 
-//    public boolean isAlive() {
-//        return true;
-//    }
+
 
 
 }

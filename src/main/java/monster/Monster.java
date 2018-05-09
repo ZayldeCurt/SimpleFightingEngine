@@ -1,17 +1,27 @@
 package monster;
 
+import java.util.Objects;
+
 public abstract class Monster {
 
     private int basicSpeed;
     private int basicDefensce;
     private int basicAttack;
     private double Health;
+    private static int mainId=0;
+    private int id;
+
 
     protected Monster(int basicSpeed, int basicDefensce, int basicAttack, double Health) {
         this.basicSpeed = basicSpeed;
         this.basicDefensce = basicDefensce;
         this.basicAttack = basicAttack;
         this.Health = Health;
+        this.id=mainId++;
+    }
+
+    public int getId() {
+        return id;
     }
 
 
@@ -55,10 +65,16 @@ public abstract class Monster {
         this.Health = health;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Monster monster = (Monster) o;
+        return id == monster.id;
+    }
 
-
-
-
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

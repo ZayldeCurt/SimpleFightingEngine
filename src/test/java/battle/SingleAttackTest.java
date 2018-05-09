@@ -19,7 +19,33 @@ public class SingleAttackTest {
         Assert.assertEquals(expectWhoDied[0],result[0]);
         Assert.assertEquals(expectWhoDied[1],result[1]);
     }
+    @Test
+    public void testSingleAttackInFewOnOneWithKilling(){
+        //given
+        Monster attacker = new Zombie(10,10,15,10.0);
+        Monster defender = new Zombie(10,10,10,1.0);
+        boolean expectIsDied = false;
 
-    //TODO dorobić testSingleAttackInFewOnOne
+        //when
+        boolean result = SingleAttack.singleAttackInFewOnOne(attacker,defender);
+
+
+        //then
+        Assert.assertEquals(expectIsDied,result);
+    }
+    @Test
+    public void testSingleAttackInFewOnOneWithoutKilling(){
+        //given
+        Monster attacker = new Zombie(10,10,15,10.0);
+        Monster defender = new Zombie(10,10,10,10.0);
+        boolean expectIsDied = true;
+
+        //when
+        boolean result = SingleAttack.singleAttackInFewOnOne(attacker,defender);
+
+        //then
+        Assert.assertEquals(expectIsDied,result);
+    }
+
 
 }
