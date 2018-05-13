@@ -106,8 +106,6 @@ public class TeamTest {
         teamB.addMonster(zombie5);
 
         //then
-
-
         //when
         Assert.assertFalse(teamA.removeMonster(zombie4));
         Assert.assertEquals(3,teamA.getSizeTeam());

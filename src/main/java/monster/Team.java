@@ -2,48 +2,57 @@ package monster;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class Team {
     private List<Monster> monsters;
-    private int sizeTema;
+    private int sizeTeam;
     private boolean teamIsExist;
 
 
     public Team() {
-        this.sizeTema = 0;
+        this.sizeTeam = 0;
         this.teamIsExist = false;
         monsters = new ArrayList<>();
     }
 
+    public Team(List<Monster> monsters) {
+        this.monsters = monsters;
+        this.sizeTeam = monsters.size();
+        if(this.sizeTeam!=0){
+            this.teamIsExist = true;
+        }
+
+    }
+
     public void addMonster(Monster monster){
         this.monsters.add(monster);
-        this.sizeTema++;
+        this.sizeTeam++;
         this.teamIsExist = true;
     }
     public void setMonsters(List<Monster> monsters) {
         this.monsters = monsters;
-        this.sizeTema = monsters.size();
+        this.sizeTeam = monsters.size();
         this.teamIsExist = true;
     }
 
     public List<Monster> getMonsters() {
         return monsters;
     }
-    public Monster getMonster(int index){
+    public Monster getMonster(final int index){
         if(!teamIsExist){
             return null;
         }
-        Monster monster = monsters.get(index);
-        if(monster.getId()==index){
-            return monster;
-        }else{
+        Monster monster = null;
+        try{
+            monster = monsters.stream().filter(x->x.getId()==index).findFirst().get();
+        }catch(NoSuchElementException exception){
             return null;
         }
-
+        return monster;
     }
     public int getSizeTeam() {
-        return sizeTema;
+        return sizeTeam;
     }
 
     public boolean isTeamIsExist() {
@@ -53,8 +62,8 @@ public class Team {
     public boolean removeMonster(Monster monster) {
         boolean result = monsters.remove(monster);
         if(result) {
-            this.sizeTema--;
-            if (sizeTema <= 0) {
+            this.sizeTeam--;
+            if (sizeTeam <= 0) {
                 this.teamIsExist = false;
             }
         }
