@@ -3,9 +3,37 @@ package battle;
 import monster.Monster;
 import monster.Team;
 
-public class figthTeamVsTeam {
 
-    public static boolean singleAttackInEvenFigth(Team teamA, Team teamB ){
+import static java.util.stream.Collectors.toList;
+
+public class FigthTeamVsTeam {
+    public static boolean fightTeamVsTeamToWin(Team teamA,Team teamB){
+        boolean whoWon=false;
+
+        while(teamA.getSizeTeam()>0 && teamB.getSizeTeam()>0){
+            singleAttackTeamVsTeam(teamA,teamB);
+        }
+        if(teamA.isTeamIsExist()&&(!teamB.isTeamIsExist())){
+            whoWon=true;
+        }else if(teamB.isTeamIsExist()&&(!teamA.isTeamIsExist())){
+            whoWon=false;
+        }
+
+        return whoWon;
+    }
+    public static boolean singleAttackTeamVsTeam(Team teamA,Team teamB){
+        FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
+        int sizeTeamA=teamA.getSizeTeam();
+        int sizeTeamB=teamB.getSizeTeam();
+        if(sizeTeamA>sizeTeamB){
+            return figthTeamVsTeam.singleAttackInNotEvenFigth(teamA,teamB,true);
+        }else if(sizeTeamA<sizeTeamB){
+            return figthTeamVsTeam.singleAttackInNotEvenFigth(teamA,teamB,false);
+        }else{
+            return figthTeamVsTeam.singleAttackInEvenFigth(teamA,teamB);
+        }
+    }
+    public boolean singleAttackInEvenFigth(Team teamA, Team teamB ){
         boolean someonedied=false;
         int teamASize = teamA.getSizeTeam();
         boolean[][] tableOfDead = new boolean[teamASize][2];
@@ -42,37 +70,40 @@ public class figthTeamVsTeam {
         }
         return someonedied;
     }
-    public static boolean singleAttackInNotEvenFigth(Team teamA,Team teamB){
-        boolean someonedied=false;
-        boolean whichTeamIsBigger = teamA.getSizeTeam()>teamB.getSizeTeam();
+//    public boolean singleAttackInNotEvenFigth(Team teamA, Team teamB, boolean whichTeamIsBigger) {
+//        boolean someonedied=false;
+//    }
 
-        someonedied = singleAttackInNotEvenFigth(teamA,teamB,whichTeamIsBigger);
-
-        return someonedied;
-    }
-
-    private static boolean singleAttackInNotEvenFigth(Team teamA, Team teamB, boolean whichTeamIsBigger) {
+    //problem z subListą, już poprawiony ale teraz nie usuwa w funkcji singleAttackInEvenFigth
+    public boolean singleAttackInNotEvenFigth(Team teamA, Team teamB, boolean whichTeamIsBigger) {
         boolean someonedied=false;
         Team biggerTeam = whichTeamIsBigger?teamA:teamB;
         Team smallerTeam = whichTeamIsBigger?teamB:teamA;
         int sizeTeam=smallerTeam.getSizeTeam();
+        //subList klonujacy, lepszy niz to nizej
+//        Team partOfBiggerTeam = new Team(biggerTeam.getMonsters().stream().collect(toList()).subList(0,sizeTeam));
+//        Team restOfBiggerTeam = new Team(biggerTeam.getMonsters().stream().collect(toList()).subList(sizeTeam,biggerTeam.getSizeTeam()));
+
         Team partOfBiggerTeam = new Team(biggerTeam.getMonsters().subList(0,sizeTeam));
-        Team restOfBiggerTeam = new Team(biggerTeam.getMonsters().subList(sizeTeam+1,biggerTeam.getSizeTeam()));
+        Team restOfBiggerTeam = new Team(biggerTeam.getMonsters().subList(sizeTeam,biggerTeam.getSizeTeam()));
 
         someonedied = singleAttackInEvenFigth(partOfBiggerTeam, smallerTeam) || someonedied;
 
+        if(smallerTeam.getSizeTeam()==0){
+            return someonedied;
+        }
         for (int i = 0; i < restOfBiggerTeam.getSizeTeam(); i++) {
             boolean isDied = SingleAttack.singleAttackInFewOnOne(restOfBiggerTeam.getMonsters().get(i),smallerTeam.getMonsters().get(0));
-            if(isDied){
+            if(!isDied){
                 smallerTeam.removeMonster(smallerTeam.getMonsters().get(0));
                 someonedied=true;
             }
+            if(smallerTeam.getSizeTeam()==0){
+                break;
+            }
         }
-
-        //TODO napisać testy
 
         return someonedied;
     }
-
 
 }
