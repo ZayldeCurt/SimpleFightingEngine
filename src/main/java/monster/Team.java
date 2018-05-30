@@ -69,4 +69,27 @@ public class Team {
         }
         return result;
     }
+
+    public void removeMonster(boolean[] tableOfDead) {
+        for (int i = 0,j=0; i < this.getSizeTeam(); i++,j++) {
+            boolean res = !tableOfDead[j];
+            if (res) {
+                this.removeMonster(this.getMonsters().get(i));
+                i--;
+            }
+        }
+    }
+
+    public void removeMonster() {
+
+        for (int i = 0; i < this.sizeTeam; i++) {
+            boolean result=false;
+            if(!this.monsters.get(i).isAlive()){
+                result=this.removeMonster(this.monsters.get(i));
+                if(result){
+                    i--;
+                }
+            }
+        }
+    }
 }

@@ -335,7 +335,7 @@ public class figthTeamVsTeamTest {
         Assert.assertEquals(expectedSizeTeamB,teamB.getSizeTeam());
     }
 
-    //problem z sublista w dwoch testach niżej
+
     @Test
     public void fightTeamVsTeamToWinTestWonTeamA1_0(){
         //given
@@ -379,10 +379,90 @@ public class figthTeamVsTeamTest {
 
         boolean expectedResult = true;
         int expectedSizeTeamA = 1;
-        int expectedSizeTeamB = 1;
+        int expectedSizeTeamB = 0;
 
         //when
         boolean result = figthTeamVsTeam.singleAttackInNotEvenFigth(teamA,teamB,true);
+
+        //then
+        Assert.assertEquals(expectedResult,result);
+        Assert.assertEquals(expectedSizeTeamA,teamA.getSizeTeam());
+        Assert.assertEquals(expectedSizeTeamB,teamB.getSizeTeam());
+
+    }
+
+    @Test
+    public void fightTeamVsTeamToWinTestLitleGroupVsGoliatWonGroup(){
+        //given
+        FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
+        Team teamA = new Team();
+        Monster zombie1 = new Zombie(1,10,15,1.0);
+        Monster zombie2 = new Zombie(1,10,15,1.0);
+        Monster zombie3 = new Zombie(1,10,15,1.0);
+        Monster zombie1a = new Zombie(1,10,15,1.0);
+        Monster zombie2a = new Zombie(1,10,15,1.0);
+        Monster zombie3a = new Zombie(1,10,15,1.0);
+
+        teamA.addMonster(zombie1);
+        teamA.addMonster(zombie2);
+        teamA.addMonster(zombie3);
+        teamA.addMonster(zombie1a);
+        teamA.addMonster(zombie2a);
+        teamA.addMonster(zombie3a);
+
+        Team teamB = new Team();
+        Monster zombie1B = new Zombie(1,10,15,100.0);
+        teamB.addMonster(zombie1B);
+
+        boolean expectedResult = true;
+        int expectedSizeTeamA = 1;
+        int expectedSizeTeamB = 0;
+
+        //when
+        boolean result = figthTeamVsTeam.fightTeamVsTeamToWin(teamA,teamB);
+        //then
+        Assert.assertEquals(expectedResult,result);
+        Assert.assertEquals(expectedSizeTeamA,teamA.getSizeTeam());
+        Assert.assertEquals(expectedSizeTeamB,teamB.getSizeTeam());
+
+    }
+    @Test
+    public void fightTeamVsTeamToWinTestGroupVsGoliatWonGroup(){
+        //given
+        FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
+        Team teamA = new Team();
+        Monster zombie1 = new Zombie(1,10,15,1.0);
+        Monster zombie2 = new Zombie(1,10,15,1.0);
+        Monster zombie3 = new Zombie(1,10,15,1.0);
+        Monster zombie4 = new Zombie(1,10,15,1.0);
+        Monster zombie5 = new Zombie(1,10,15,1.0);
+        Monster zombie1a = new Zombie(1,10,15,1.0);
+        Monster zombie2a = new Zombie(1,10,15,1.0);
+        Monster zombie3a = new Zombie(1,10,15,1.0);
+        Monster zombie4a = new Zombie(1,10,15,1.0);
+        Monster zombie5a = new Zombie(1,10,15,1.0);
+
+        teamA.addMonster(zombie1);
+        teamA.addMonster(zombie2);
+        teamA.addMonster(zombie3);
+        teamA.addMonster(zombie4);
+        teamA.addMonster(zombie5);
+        teamA.addMonster(zombie1a);
+        teamA.addMonster(zombie2a);
+        teamA.addMonster(zombie3a);
+        teamA.addMonster(zombie4a);
+        teamA.addMonster(zombie5a);
+
+        Team teamB = new Team();
+        Monster zombie1B = new Zombie(1,10,15,100.0);
+        teamB.addMonster(zombie1B);
+
+        boolean expectedResult = true;
+        int expectedSizeTeamA = 8;
+        int expectedSizeTeamB = 0;
+
+        //when
+        boolean result = figthTeamVsTeam.fightTeamVsTeamToWin(teamA,teamB);
 
         //then
         Assert.assertEquals(expectedResult,result);
