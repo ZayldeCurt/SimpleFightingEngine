@@ -6,7 +6,7 @@ import monster.Soldier;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TeamTest {
+public class teamTest {
     @Test
     public void addOneMonsterToTeamTest(){
         //given

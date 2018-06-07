@@ -5,7 +5,7 @@ import monster.Soldier;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SingleAttackTest {
+public class singleAttackTest {
     @Test
     public void testSingleAttackInFightOneOnOne(){
         //given

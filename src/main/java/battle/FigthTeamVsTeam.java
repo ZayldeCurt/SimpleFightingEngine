@@ -21,7 +21,6 @@ public class FigthTeamVsTeam {
 
         return whoWon;
     }
-
     public static boolean singleAttackTeamVsTeam(Team teamA,Team teamB){
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         int sizeTeamA=teamA.getSizeTeam();
@@ -34,7 +33,6 @@ public class FigthTeamVsTeam {
             return figthTeamVsTeam.singleAttackInEvenFigth(teamA,teamB);
         }
     }
-
     public boolean singleAttackInEvenFigth(Team teamA, Team teamB ){
         boolean someonedied=false;
         int teamASize = teamA.getSizeTeam();

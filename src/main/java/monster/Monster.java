@@ -24,8 +24,6 @@ public abstract class Monster {
         return id;
     }
 
-
-    ;
     public int run() {
         return 1;
     }
