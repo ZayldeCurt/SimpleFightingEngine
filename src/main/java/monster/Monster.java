@@ -25,9 +25,23 @@ public abstract class Monster {
     }
 
 
-    public abstract double attack(Monster monster);
-    public abstract int run();
-    public abstract int defense();
+    ;
+    public int run() {
+        return 1;
+    }
+
+    public int defense() {
+        return getBasicDefensce();
+    }
+
+    public double attack(Monster monster){
+        double demage;
+        int currentAttack;
+
+        currentAttack = this.getBasicAttack();
+        demage = currentAttack-monster.defense();
+        return demage<0 ? 0 : demage;
+    }
 
     public boolean isAlive() {
         if(Health >0){

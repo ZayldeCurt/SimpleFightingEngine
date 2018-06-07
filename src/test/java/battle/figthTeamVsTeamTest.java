@@ -2,7 +2,7 @@ package battle;
 
 import monster.Monster;
 import monster.Team;
-import monster.Zombie;
+import monster.Soldier;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,16 +12,16 @@ public class figthTeamVsTeamTest {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,1.0);
-        Monster zombie2 = new Zombie(1,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
+        Monster soldier1 = new Soldier(1,10,15,1.0);
+        Monster soldier2 = new Soldier(1,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
 
         Team teamB = new Team();
-        Monster zombie4 = new Zombie(1,10,15,5.0);
-        Monster zombie5 = new Zombie(1,10,15,5.0);
-        teamB.addMonster(zombie4);
-        teamB.addMonster(zombie5);
+        Monster soldier4 = new Soldier(1,10,15,5.0);
+        Monster soldier5 = new Soldier(1,10,15,5.0);
+        teamB.addMonster(soldier4);
+        teamB.addMonster(soldier5);
 
         //when
         boolean result = figthTeamVsTeam.singleAttackInEvenFigth(teamA,teamB);
@@ -30,23 +30,23 @@ public class figthTeamVsTeamTest {
         Assert.assertTrue(result);
         Assert.assertEquals(1,teamA.getSizeTeam());
         Assert.assertEquals(0,teamB.getSizeTeam());
-        Assert.assertEquals(zombie2,teamA.getMonsters().get(0));
+        Assert.assertEquals(soldier2,teamA.getMonsters().get(0));
     }
     @Test
     public void singleAttackInEvenFigthTestNoneIsDead() {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,10.0);
-        Monster zombie2 = new Zombie(1,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
+        Monster soldier1 = new Soldier(1,10,15,10.0);
+        Monster soldier2 = new Soldier(1,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
 
         Team teamB = new Team();
-        Monster zombie4 = new Zombie(1,10,15,10.0);
-        Monster zombie5 = new Zombie(1,10,15,10.0);
-        teamB.addMonster(zombie4);
-        teamB.addMonster(zombie5);
+        Monster soldier4 = new Soldier(1,10,15,10.0);
+        Monster soldier5 = new Soldier(1,10,15,10.0);
+        teamB.addMonster(soldier4);
+        teamB.addMonster(soldier5);
 
         //when
         boolean result = figthTeamVsTeam.singleAttackInEvenFigth(teamA,teamB);
@@ -55,24 +55,24 @@ public class figthTeamVsTeamTest {
         Assert.assertFalse(result);
         Assert.assertEquals(2,teamA.getSizeTeam());
         Assert.assertEquals(2,teamB.getSizeTeam());
-        Assert.assertEquals(zombie2,teamA.getMonster(zombie2.getId()));
-        Assert.assertEquals(zombie1,teamA.getMonsters().get(0));
+        Assert.assertEquals(soldier2,teamA.getMonster(soldier2.getId()));
+        Assert.assertEquals(soldier1,teamA.getMonsters().get(0));
     }
     @Test
     public void singleAttackInEvenFigthTestEveryOneIsDead() {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,1.0);
-        Monster zombie2 = new Zombie(1,10,15,2.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
+        Monster soldier1 = new Soldier(1,10,15,1.0);
+        Monster soldier2 = new Soldier(1,10,15,2.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
 
         Team teamB = new Team();
-        Monster zombie4 = new Zombie(1,10,15,5.0);
-        Monster zombie5 = new Zombie(1,10,15,4.0);
-        teamB.addMonster(zombie4);
-        teamB.addMonster(zombie5);
+        Monster soldier4 = new Soldier(1,10,15,5.0);
+        Monster soldier5 = new Soldier(1,10,15,4.0);
+        teamB.addMonster(soldier4);
+        teamB.addMonster(soldier5);
 
         //when
         boolean result = figthTeamVsTeam.singleAttackInEvenFigth(teamA,teamB);
@@ -81,7 +81,7 @@ public class figthTeamVsTeamTest {
         Assert.assertTrue(result);
         Assert.assertEquals(0,teamA.getSizeTeam());
         Assert.assertEquals(0,teamB.getSizeTeam());
-        Assert.assertNotEquals(zombie2,teamA.getMonster(zombie2.getId()));
+        Assert.assertNotEquals(soldier2,teamA.getMonster(soldier2.getId()));
         boolean tryAssert=false;
         try{
             Monster monster =teamA.getMonsters().get(0);
@@ -95,16 +95,16 @@ public class figthTeamVsTeamTest {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,10.0);
-        Monster zombie2 = new Zombie(1,10,15,15.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
+        Monster soldier1 = new Soldier(1,10,15,10.0);
+        Monster soldier2 = new Soldier(1,10,15,15.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
 
         Team teamB = new Team();
-        Monster zombie4 = new Zombie(1,10,15,15.0);
-        Monster zombie5 = new Zombie(1,10,15,15.0);
-        teamB.addMonster(zombie4);
-        teamB.addMonster(zombie5);
+        Monster soldier4 = new Soldier(1,10,15,15.0);
+        Monster soldier5 = new Soldier(1,10,15,15.0);
+        teamB.addMonster(soldier4);
+        teamB.addMonster(soldier5);
 
         //when
         boolean result1 = figthTeamVsTeam.singleAttackInEvenFigth(teamA,teamB);
@@ -116,8 +116,8 @@ public class figthTeamVsTeamTest {
 
         Assert.assertEquals(1,teamA.getSizeTeam());
         Assert.assertEquals(2,teamB.getSizeTeam());
-        Assert.assertEquals(zombie2,teamA.getMonster(zombie2.getId()));
-        Assert.assertEquals(zombie2,teamA.getMonsters().get(0));
+        Assert.assertEquals(soldier2,teamA.getMonster(soldier2.getId()));
+        Assert.assertEquals(soldier2,teamA.getMonsters().get(0));
 
     }
     @Test
@@ -125,20 +125,20 @@ public class figthTeamVsTeamTest {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,10.0);
-        Monster zombie2 = new Zombie(1,10,15,10.0);
-        Monster zombie3 = new Zombie(1,10,15,10.0);
-        Monster zombie4 = new Zombie(1,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
-        teamA.addMonster(zombie4);
+        Monster soldier1 = new Soldier(1,10,15,10.0);
+        Monster soldier2 = new Soldier(1,10,15,10.0);
+        Monster soldier3 = new Soldier(1,10,15,10.0);
+        Monster soldier4 = new Soldier(1,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
+        teamA.addMonster(soldier4);
 
         Team teamB = new Team();
-        Monster zombie5 = new Zombie(1,10,15,25.0);
-        Monster zombie6 = new Zombie(1,10,15,10.0);
-        teamB.addMonster(zombie5);
-        teamB.addMonster(zombie6);
+        Monster soldier5 = new Soldier(1,10,15,25.0);
+        Monster soldier6 = new Soldier(1,10,15,10.0);
+        teamB.addMonster(soldier5);
+        teamB.addMonster(soldier6);
 
         boolean expectedResult = false;
         int sizeTeamA = teamA.getSizeTeam();
@@ -156,20 +156,20 @@ public class figthTeamVsTeamTest {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,10.0);
-        Monster zombie2 = new Zombie(1,10,15,10.0);
-        Monster zombie3 = new Zombie(1,10,15,10.0);
-        Monster zombie4 = new Zombie(1,10,15,10.0);
-        Monster zombie5 = new Zombie(1,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
-        teamA.addMonster(zombie4);
-        teamA.addMonster(zombie5);
+        Monster soldier1 = new Soldier(1,10,15,10.0);
+        Monster soldier2 = new Soldier(1,10,15,10.0);
+        Monster soldier3 = new Soldier(1,10,15,10.0);
+        Monster soldier4 = new Soldier(1,10,15,10.0);
+        Monster soldier5 = new Soldier(1,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
+        teamA.addMonster(soldier4);
+        teamA.addMonster(soldier5);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,100.0);
-        teamB.addMonster(zombie1B);
+        Monster soldier1B = new Soldier(1,10,15,100.0);
+        teamB.addMonster(soldier1B);
 
         boolean expectedResult = false;
         int expectedSizeTeamA = 5;
@@ -187,22 +187,22 @@ public class figthTeamVsTeamTest {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,10.0);
-        Monster zombie2 = new Zombie(1,10,15,10.0);
-        Monster zombie3 = new Zombie(1,10,15,10.0);
-        Monster zombie4 = new Zombie(1,10,15,10.0);
-        Monster zombie5 = new Zombie(1,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
-        teamA.addMonster(zombie4);
-        teamA.addMonster(zombie5);
+        Monster soldier1 = new Soldier(1,10,15,10.0);
+        Monster soldier2 = new Soldier(1,10,15,10.0);
+        Monster soldier3 = new Soldier(1,10,15,10.0);
+        Monster soldier4 = new Soldier(1,10,15,10.0);
+        Monster soldier5 = new Soldier(1,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
+        teamA.addMonster(soldier4);
+        teamA.addMonster(soldier5);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,10.0);
-        Monster zombie2B = new Zombie(1,10,15,10.0);
-        teamB.addMonster(zombie1B);
-        teamB.addMonster(zombie2B);
+        Monster soldier1B = new Soldier(1,10,15,10.0);
+        Monster soldier2B = new Soldier(1,10,15,10.0);
+        teamB.addMonster(soldier1B);
+        teamB.addMonster(soldier2B);
 
         boolean expectedResult = true;
         int expectedSizeTeamA = 5;
@@ -220,22 +220,22 @@ public class figthTeamVsTeamTest {
     public void singleAttackTeamVsTeamInNotEvenTeamInTeamBOneIsAlive(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,10.0);
-        Monster zombie2 = new Zombie(1,10,15,10.0);
-        Monster zombie3 = new Zombie(1,10,15,10.0);
-        Monster zombie4 = new Zombie(1,10,15,10.0);
-        Monster zombie5 = new Zombie(1,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
-        teamA.addMonster(zombie4);
-        teamA.addMonster(zombie5);
+        Monster soldier1 = new Soldier(1,10,15,10.0);
+        Monster soldier2 = new Soldier(1,10,15,10.0);
+        Monster soldier3 = new Soldier(1,10,15,10.0);
+        Monster soldier4 = new Soldier(1,10,15,10.0);
+        Monster soldier5 = new Soldier(1,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
+        teamA.addMonster(soldier4);
+        teamA.addMonster(soldier5);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,10.0);
-        Monster zombie2B = new Zombie(1,10,15,17.0);
-        teamB.addMonster(zombie1B);
-        teamB.addMonster(zombie2B);
+        Monster soldier1B = new Soldier(1,10,15,10.0);
+        Monster soldier2B = new Soldier(1,10,15,17.0);
+        teamB.addMonster(soldier1B);
+        teamB.addMonster(soldier2B);
 
         boolean expectedResult = true;
         int expectedSizeTeamA = 5;
@@ -254,16 +254,16 @@ public class figthTeamVsTeamTest {
     public void singleAttackTeamVsTeamInEvenTeamInTeamBOneIsAlive(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,10.0);
-        Monster zombie2 = new Zombie(1,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
+        Monster soldier1 = new Soldier(1,10,15,10.0);
+        Monster soldier2 = new Soldier(1,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,5.0);
-        Monster zombie2B = new Zombie(1,10,15,17.0);
-        teamB.addMonster(zombie1B);
-        teamB.addMonster(zombie2B);
+        Monster soldier1B = new Soldier(1,10,15,5.0);
+        Monster soldier2B = new Soldier(1,10,15,17.0);
+        teamB.addMonster(soldier1B);
+        teamB.addMonster(soldier2B);
 
         boolean expectedResult = true;
         int expectedSizeTeamA = 2;
@@ -284,16 +284,16 @@ public class figthTeamVsTeamTest {
     public void fightTeamVsTeamToWinTestWonTeamA(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,30.0);
-        Monster zombie2 = new Zombie(1,10,15,30.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
+        Monster soldier1 = new Soldier(1,10,15,30.0);
+        Monster soldier2 = new Soldier(1,10,15,30.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,5.0);
-        Monster zombie2B = new Zombie(1,10,15,30.0);
-        teamB.addMonster(zombie1B);
-        teamB.addMonster(zombie2B);
+        Monster soldier1B = new Soldier(1,10,15,5.0);
+        Monster soldier2B = new Soldier(1,10,15,30.0);
+        teamB.addMonster(soldier1B);
+        teamB.addMonster(soldier2B);
 
         boolean expectedResult = true;
         int expectedSizeTeamA = 2;
@@ -311,16 +311,16 @@ public class figthTeamVsTeamTest {
     public void fightTeamVsTeamToWinTestWonTeamB(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,30.0);
-        Monster zombie2 = new Zombie(1,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
+        Monster soldier1 = new Soldier(1,10,15,30.0);
+        Monster soldier2 = new Soldier(1,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,30.0);
-        Monster zombie2B = new Zombie(1,10,15,30.0);
-        teamB.addMonster(zombie1B);
-        teamB.addMonster(zombie2B);
+        Monster soldier1B = new Soldier(1,10,15,30.0);
+        Monster soldier2B = new Soldier(1,10,15,30.0);
+        teamB.addMonster(soldier1B);
+        teamB.addMonster(soldier2B);
 
         boolean expectedResult = false;
         int expectedSizeTeamA = 0;
@@ -340,16 +340,16 @@ public class figthTeamVsTeamTest {
     public void fightTeamVsTeamToWinTestWonTeamA1_0(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,10.0);
-        Monster zombie2 = new Zombie(1,10,15,30.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
+        Monster soldier1 = new Soldier(1,10,15,10.0);
+        Monster soldier2 = new Soldier(1,10,15,30.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,30.0);
-        Monster zombie2B = new Zombie(1,10,15,5.0);
-        teamB.addMonster(zombie1B);
-        teamB.addMonster(zombie2B);
+        Monster soldier1B = new Soldier(1,10,15,30.0);
+        Monster soldier2B = new Soldier(1,10,15,5.0);
+        teamB.addMonster(soldier1B);
+        teamB.addMonster(soldier2B);
 
         boolean expectedResult = true;
         int expectedSizeTeamA = 1;
@@ -368,14 +368,14 @@ public class figthTeamVsTeamTest {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,1.0);
-        Monster zombie2 = new Zombie(1,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
+        Monster soldier1 = new Soldier(1,10,15,1.0);
+        Monster soldier2 = new Soldier(1,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,10.0);
-        teamB.addMonster(zombie1B);
+        Monster soldier1B = new Soldier(1,10,15,10.0);
+        teamB.addMonster(soldier1B);
 
         boolean expectedResult = true;
         int expectedSizeTeamA = 1;
@@ -396,23 +396,23 @@ public class figthTeamVsTeamTest {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,1.0);
-        Monster zombie2 = new Zombie(1,10,15,1.0);
-        Monster zombie3 = new Zombie(1,10,15,1.0);
-        Monster zombie1a = new Zombie(1,10,15,1.0);
-        Monster zombie2a = new Zombie(1,10,15,1.0);
-        Monster zombie3a = new Zombie(1,10,15,1.0);
+        Monster soldier1 = new Soldier(1,10,15,1.0);
+        Monster soldier2 = new Soldier(1,10,15,1.0);
+        Monster soldier3 = new Soldier(1,10,15,1.0);
+        Monster soldier1a = new Soldier(1,10,15,1.0);
+        Monster soldier2a = new Soldier(1,10,15,1.0);
+        Monster soldier3a = new Soldier(1,10,15,1.0);
 
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
-        teamA.addMonster(zombie1a);
-        teamA.addMonster(zombie2a);
-        teamA.addMonster(zombie3a);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
+        teamA.addMonster(soldier1a);
+        teamA.addMonster(soldier2a);
+        teamA.addMonster(soldier3a);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,100.0);
-        teamB.addMonster(zombie1B);
+        Monster soldier1B = new Soldier(1,10,15,100.0);
+        teamB.addMonster(soldier1B);
 
         boolean expectedResult = true;
         int expectedSizeTeamA = 1;
@@ -431,31 +431,31 @@ public class figthTeamVsTeamTest {
         //given
         FigthTeamVsTeam figthTeamVsTeam = new FigthTeamVsTeam();
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(1,10,15,1.0);
-        Monster zombie2 = new Zombie(1,10,15,1.0);
-        Monster zombie3 = new Zombie(1,10,15,1.0);
-        Monster zombie4 = new Zombie(1,10,15,1.0);
-        Monster zombie5 = new Zombie(1,10,15,1.0);
-        Monster zombie1a = new Zombie(1,10,15,1.0);
-        Monster zombie2a = new Zombie(1,10,15,1.0);
-        Monster zombie3a = new Zombie(1,10,15,1.0);
-        Monster zombie4a = new Zombie(1,10,15,1.0);
-        Monster zombie5a = new Zombie(1,10,15,1.0);
+        Monster soldier1 = new Soldier(1,10,15,1.0);
+        Monster soldier2 = new Soldier(1,10,15,1.0);
+        Monster soldier3 = new Soldier(1,10,15,1.0);
+        Monster soldier4 = new Soldier(1,10,15,1.0);
+        Monster soldier5 = new Soldier(1,10,15,1.0);
+        Monster soldier1a = new Soldier(1,10,15,1.0);
+        Monster soldier2a = new Soldier(1,10,15,1.0);
+        Monster soldier3a = new Soldier(1,10,15,1.0);
+        Monster soldier4a = new Soldier(1,10,15,1.0);
+        Monster soldier5a = new Soldier(1,10,15,1.0);
 
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
-        teamA.addMonster(zombie4);
-        teamA.addMonster(zombie5);
-        teamA.addMonster(zombie1a);
-        teamA.addMonster(zombie2a);
-        teamA.addMonster(zombie3a);
-        teamA.addMonster(zombie4a);
-        teamA.addMonster(zombie5a);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
+        teamA.addMonster(soldier4);
+        teamA.addMonster(soldier5);
+        teamA.addMonster(soldier1a);
+        teamA.addMonster(soldier2a);
+        teamA.addMonster(soldier3a);
+        teamA.addMonster(soldier4a);
+        teamA.addMonster(soldier5a);
 
         Team teamB = new Team();
-        Monster zombie1B = new Zombie(1,10,15,100.0);
-        teamB.addMonster(zombie1B);
+        Monster soldier1B = new Soldier(1,10,15,100.0);
+        teamB.addMonster(soldier1B);
 
         boolean expectedResult = true;
         int expectedSizeTeamA = 8;

@@ -2,7 +2,7 @@ package battle;
 
 import monster.Monster;
 import monster.Team;
-import monster.Zombie;
+import monster.Soldier;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,57 +11,57 @@ public class TeamTest {
     public void addOneMonsterToTeamTest(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(10,10,15,10.0);
+        Monster soldier1 = new Soldier(10,10,15,10.0);
 
         //when
-        teamA.addMonster(zombie1);
+        teamA.addMonster(soldier1);
 
         //then
         Assert.assertEquals(1,teamA.getSizeTeam());
         Assert.assertTrue(teamA.isTeamIsExist());
-        Assert.assertEquals(zombie1,teamA.getMonster(zombie1.getId()));
+        Assert.assertEquals(soldier1,teamA.getMonster(soldier1.getId()));
     }
 
     @Test
     public void addMonstersToTeamTest(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(10,10,15,10.0);
-        Monster zombie2 = new Zombie(10,10,15,10.0);
-        Monster zombie3 = new Zombie(10,10,15,10.0);
+        Monster soldier1 = new Soldier(10,10,15,10.0);
+        Monster soldier2 = new Soldier(10,10,15,10.0);
+        Monster soldier3 = new Soldier(10,10,15,10.0);
 
         //when
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
 
         //then
         Assert.assertEquals(3,teamA.getSizeTeam());
         Assert.assertTrue(teamA.isTeamIsExist());
-        Assert.assertEquals(zombie1,teamA.getMonsters().get(0));
-        Assert.assertEquals(zombie2,teamA.getMonsters().get(1));
-        Assert.assertEquals(zombie3,teamA.getMonster(zombie3.getId()));
+        Assert.assertEquals(soldier1,teamA.getMonsters().get(0));
+        Assert.assertEquals(soldier2,teamA.getMonsters().get(1));
+        Assert.assertEquals(soldier3,teamA.getMonster(soldier3.getId()));
     }
 
     @Test
     public void removeFromTeamTest(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(10,10,15,10.0);
-        Monster zombie2 = new Zombie(10,10,15,10.0);
-        Monster zombie3 = new Zombie(10,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
+        Monster soldier1 = new Soldier(10,10,15,10.0);
+        Monster soldier2 = new Soldier(10,10,15,10.0);
+        Monster soldier3 = new Soldier(10,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
 
         //when
-        teamA.removeMonster(zombie2);
+        teamA.removeMonster(soldier2);
 
         //then
         Assert.assertEquals(2,teamA.getSizeTeam());
         Assert.assertTrue(teamA.isTeamIsExist());
-        Assert.assertEquals(zombie1,teamA.getMonster(zombie1.getId()));
-        Assert.assertNotEquals(zombie2,teamA.getMonster(zombie2.getId()));
+        Assert.assertEquals(soldier1,teamA.getMonster(soldier1.getId()));
+        Assert.assertNotEquals(soldier2,teamA.getMonster(soldier2.getId()));
 
     }
 
@@ -69,53 +69,53 @@ public class TeamTest {
     public void removeLastMonsterFromTeamTest(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(10,10,15,10.0);
-        Monster zombie2 = new Zombie(10,10,15,10.0);
-        Monster zombie3 = new Zombie(10,10,15,10.0);
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
+        Monster soldier1 = new Soldier(10,10,15,10.0);
+        Monster soldier2 = new Soldier(10,10,15,10.0);
+        Monster soldier3 = new Soldier(10,10,15,10.0);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
 
         //when
-        teamA.removeMonster(zombie2);
-        teamA.removeMonster(zombie3);
-        teamA.removeMonster(zombie1);
+        teamA.removeMonster(soldier2);
+        teamA.removeMonster(soldier3);
+        teamA.removeMonster(soldier1);
 
         //then
         Assert.assertEquals(0,teamA.getSizeTeam());
         Assert.assertFalse(teamA.isTeamIsExist());
-        Assert.assertNotEquals(zombie1,teamA.getMonster(zombie1.getId()));
-        Assert.assertNotEquals(zombie2,teamA.getMonster(zombie2.getId()));
+        Assert.assertNotEquals(soldier1,teamA.getMonster(soldier1.getId()));
+        Assert.assertNotEquals(soldier2,teamA.getMonster(soldier2.getId()));
     }
     @Test
     public void removeMonsterFromWrongTeam(){
         //given
         Team teamA = new Team();
-        Monster zombie1 = new Zombie(10,10,15,10.0);
-        Monster zombie2 = new Zombie(10,10,15,10.0);
-        Monster zombie3 = new Zombie(10,10,15,10.0);
+        Monster soldier1 = new Soldier(10,10,15,10.0);
+        Monster soldier2 = new Soldier(10,10,15,10.0);
+        Monster soldier3 = new Soldier(10,10,15,10.0);
 
         Team teamB = new Team();
-        Monster zombie4 = new Zombie(10,10,15,10.0);
-        Monster zombie5 = new Zombie(10,10,15,10.0);
+        Monster soldier4 = new Soldier(10,10,15,10.0);
+        Monster soldier5 = new Soldier(10,10,15,10.0);
 
-        teamA.addMonster(zombie1);
-        teamA.addMonster(zombie2);
-        teamA.addMonster(zombie3);
-        teamB.addMonster(zombie4);
-        teamB.addMonster(zombie5);
+        teamA.addMonster(soldier1);
+        teamA.addMonster(soldier2);
+        teamA.addMonster(soldier3);
+        teamB.addMonster(soldier4);
+        teamB.addMonster(soldier5);
 
         //then
         //when
-        Assert.assertFalse(teamA.removeMonster(zombie4));
+        Assert.assertFalse(teamA.removeMonster(soldier4));
         Assert.assertEquals(3,teamA.getSizeTeam());
         Assert.assertEquals(2,teamB.getSizeTeam());
 
-        Assert.assertFalse(teamB.removeMonster(zombie1));
+        Assert.assertFalse(teamB.removeMonster(soldier1));
         Assert.assertEquals(3,teamA.getSizeTeam());
         Assert.assertEquals(2,teamB.getSizeTeam());
 
-        Assert.assertTrue(teamA.removeMonster(zombie1));
+        Assert.assertTrue(teamA.removeMonster(soldier1));
         Assert.assertEquals(2,teamA.getSizeTeam());
         Assert.assertEquals(2,teamB.getSizeTeam());
     }
