@@ -3,9 +3,12 @@ package battle;
 
 import monster.Monster;
 import monster.Soldier;
+import monster.Vampire;
 import monster.Zombie;
 import org.junit.Assert;
 import org.junit.Test;
+
+
 
 public class monsterTest {
 
@@ -66,5 +69,53 @@ public class monsterTest {
         Assert.assertEquals(expectAttack,transparentZombie.getBasicAttack());
     }
 
+    @Test
+    public void VampireTestBite(){
+        //Given
+        Monster vampire = new Vampire(10,10,10,10.0);
+        Monster victim = new Soldier(10,5,5,10.0);
+        double expectLife = 11.0;
+        double expectedLifeOfVictim = 5;
+
+        //When
+        SingleAttack.singleAttackInFightOneOnOne(vampire,victim);
+
+        //Then
+        Assert.assertEquals((int)(expectLife*100),(int)(vampire.getHealth()*100));
+        Assert.assertEquals((int)(expectedLifeOfVictim*100),(int)(victim.getHealth()*100));
+    }
+    @Test
+    public void VampireTestBite2(){
+        //Given
+        Monster vampire = new Vampire(10,10,10,10.0);
+        Monster victim = new Soldier(10,5,5,10.0);
+        double expectLife = 11.5;
+        double expectedLifeOfVictim = 0;
+
+        //When
+        SingleAttack.singleAttackInFightOneOnOne(vampire,victim);
+        SingleAttack.singleAttackInFightOneOnOne(vampire,victim);
+
+        //Then
+        Assert.assertEquals((int)(expectLife*100),(int)(vampire.getHealth()*100));
+        Assert.assertEquals((int)(expectedLifeOfVictim*100),(int)(victim.getHealth()*100));
+        Assert.assertFalse(victim.isAlive());
+    }
+    @Test
+    public void VampireTestNotBite(){
+        //Given
+        Monster vampire = new Vampire(10,10,10,10.0);
+        Monster victim = new Soldier(10,10,10,10.0);
+        double expectLife = 10;
+        double expectedLifeOfVictim = 10;
+
+        //When
+        SingleAttack.singleAttackInFightOneOnOne(vampire,victim);
+
+        //Then
+        Assert.assertEquals((int)(expectLife*100),(int)(vampire.getHealth()*100));
+        Assert.assertEquals((int)(expectedLifeOfVictim*100),(int)(victim.getHealth()*100));
+        Assert.assertTrue(victim.isAlive());
+    }
 
 }
